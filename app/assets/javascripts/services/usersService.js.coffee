@@ -12,7 +12,7 @@ angular.module('bssApp').factory 'Users', ($resource) ->
       new @service(user: attrs).$save (
         (user) -> 
           attrs.id = user.id
-          successHandler (attrs)), 
+          successHandler (user)), 
         (error) -> 
           attrs.errors = error.data.errors
 
