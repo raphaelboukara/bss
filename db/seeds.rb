@@ -1,0 +1,5 @@
+User.create!(name: 'Raphael Boukara', email: 'raphael.boukara@gmail.com')
+User.create!(name: 'David Cohen', email: 'david.cohen@gmail.com')
+User.create!(name: 'Eden Boukara', email: 'eden.boukara@gmail.com')
+User.create!(name: 'Yossef Levy', email: 'yossef.levy@gmail.com')
+User.create!(name: 'Mickael Sitbon', email: 'mickael.sitbon@gmail.com')

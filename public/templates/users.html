@@ -1,0 +1,64 @@
+<div class="col-sm-12" ng-init="init()">
+
+	<div class="row">
+		<div class="col-sm-12">
+			<h1>USERS</h1>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-sm-3">
+			<form role="form" ng-submit="createUser(user)" novalidate>
+				<div class="form-group" ng-class="{ 'has-error' : user.errors.name}">
+					<label class="control-label" for="name">Name:</label>
+					<input type="text" class="form-control" id="name" ng-model='user.name' placeholder="Enter user name">
+					<span class="help-block">
+						<div ng-repeat="error in user.errors.name">Name {{ error }}</div>
+					</span>
+				</div>
+				<div class="form-group" ng-class="{ 'has-error' : user.errors.email}">
+					<label class="control-label" for="email">Email:</label>
+					<input type="text" class="form-control" id="email" ng-model='user.email' placeholder="Enter user email">
+					<span class="help-block">
+						<div ng-repeat="error in user.errors.email">Email {{ error }}</div>
+					</span>
+				</div>
+				<button type="submit" class="btn btn-default">ADD</button>
+			</form>
+		</div>
+		<div class="col-sm-9">
+			<div class="table-responsive">
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th class="id">id </th>
+							<th class="name">name </th>
+							<th class="email">email </th>
+							<th class="updated_at">date update </th>
+							<th class="created_at">date creation </th>
+							<th>tools</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="user in users">
+							<td>{{ user.id }}</td>
+							<td>{{ user.name }}</td>
+							<td>{{ user.email }}</td>
+							<td>{{ user.updated_at | date:'medium' }}</td>
+							<td>{{ user.created_at | date:'medium' }}</td>
+							<td>
+								<a href='' ng-click="deleteUser(user.id, $index)">
+									<span class="glyphicon glyphicon-trash"></span>Delete
+								</a>
+								<a href='#/users/{{user.id}}' >
+									<span class="glyphicon glyphicon-user"></span>Profil
+								</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+</div>
