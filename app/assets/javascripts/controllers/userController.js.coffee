@@ -1,4 +1,4 @@
-angular.module('bssApp').controller "UserController", ($scope, $routeParams, $location, Users) ->
+angular.module('bssApp').controller "UserController", ($scope, $routeParams, Users) ->
      
   $scope.init = -> 
     @userService = new Users(serverErrorHandler)

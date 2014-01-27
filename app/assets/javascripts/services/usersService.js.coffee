@@ -8,7 +8,7 @@ angular.module('bssApp').factory 'Users', ($resource) ->
         {update: {method: 'PUT'}})
       @errorHandler = errorHandler
 
-    create: (attrs, successHandler, errorHandler) ->
+    create: (attrs, successHandler) ->
       new @service(user: attrs).$save (
         (user) -> 
           attrs.id = user.id
