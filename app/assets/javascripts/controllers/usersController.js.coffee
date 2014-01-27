@@ -3,6 +3,10 @@ angular.module('bssApp').controller "UsersController", ($scope, Users) ->
   $scope.init = -> 
     @usersService = new Users(serverErrorHandler)
     $scope.users = @usersService.all()
+    $scope.master =
+      name: ""
+      email: ""
+    $scope.user = angular.copy $scope.master;
   
   $scope.createUser = (user) ->
     @usersService.create user, 
