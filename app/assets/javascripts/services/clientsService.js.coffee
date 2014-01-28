@@ -17,7 +17,7 @@ angular.module('bssApp').factory 'Clients', ($resource) ->
           attrs.errors = error.data.errors
 
     update: (attrs, successHandler) ->
-      new @service(user: attrs).$update {userId: attrs.id}, 
+      new @service(client: attrs).$update {id: attrs.id}, 
         ((user) -> 
           successHandler (attrs)), 
         ((error) -> 
@@ -32,6 +32,6 @@ angular.module('bssApp').factory 'Clients', ($resource) ->
       @service.query((-> null), @errorHandler)
 
     find: (id, successHandler) ->
-      @service.get {userId: id}, ((user)-> 
-        successHandler?(user)
-        user), @errorHandler
+      @service.get {id: id}, ((client)-> 
+        successHandler?(client)
+        client), @errorHandler

@@ -6,6 +6,10 @@ class ClientsController < ApplicationController
 		respond_with User.find(params[:user_id]).clients
 	end
 
+	def show
+		respond_with User.find(params[:user_id]).clients.find(params[:id])
+	end
+
 	def create
 		user = User.find(params[:user_id]);
 		respond_with(user.clients.create(client_params), :location => user_clients_url) 
