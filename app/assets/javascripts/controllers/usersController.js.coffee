@@ -1,6 +1,7 @@
 angular.module('bssApp').controller "UsersController", ($scope, Users) ->
      
   $scope.init = -> 
+    alert "haut:"+screen.height+" larg:"+screen.width
     @usersService = new Users(serverErrorHandler)
     $scope.users = @usersService.all()
     $scope.master =

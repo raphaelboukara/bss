@@ -1,4 +1,4 @@
-bssApp = angular.module('bssApp', ['ngRoute', 'ngResource'])
+bssApp = angular.module('bssApp', ['ngRoute', 'ngResource', 'ui.bootstrap'])
 
 bssApp.config ($routeProvider) ->
 	$routeProvider.when '/', redirectTo: '/users'
