@@ -1,9 +1,9 @@
 angular.module('bssApp').controller "UsersController", ($scope, Users) ->
      
   $scope.init = -> 
-    alert "haut:"+screen.height+" larg:"+screen.width
     @usersService = new Users(serverErrorHandler)
     $scope.users = @usersService.all()
+    $scope.openUsers = []
     $scope.master =
       name: ""
       email: ""
@@ -20,6 +20,12 @@ angular.module('bssApp').controller "UsersController", ($scope, Users) ->
       @usersService.delete id, 
       -> $scope.users.splice(ids, 1) ,
       -> serverErrorHandler
+
+  $scope.addOpenUser = (user) ->
+    $scope.openUsers.unshift user
+
+  $scope.removeOpenUser = (ids) ->
+    $scope.openUsers.splice(ids, 1)
 
   serverErrorHandler = ->
     alert("There was a server error, please reload the page and try again.")

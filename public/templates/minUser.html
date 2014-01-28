@@ -1,0 +1,9 @@
+<div class="col-sm-12">
+	<a class="pull-right" ng-click="close()">
+		<h1 class="glyphicon glyphicon-remove-sign"></h1>
+	</a>
+	<h1>
+		USER <small>{{ user.name }} ({{ user.email }})</small>
+	</h1>
+	{{user | json}}
+</div>

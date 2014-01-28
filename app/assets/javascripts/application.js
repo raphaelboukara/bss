@@ -4,6 +4,7 @@
 //= require lib/angular/angular.min
 //= require lib/angular/angular-resource.min
 //= require lib/angular/angular-route.min
+//= require lib/angular/angular-animate.min
 //= require lib/bootstrap/ui.bootstrap
 //= require app
 //= require_tree .
