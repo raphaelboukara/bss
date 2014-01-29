@@ -1,6 +1,6 @@
 angular.module('bssApp').factory 'Users', ($resource) ->
 
-  class Users
+  class DDDDUsers
 
     constructor: (errorHandler) ->
       @service = $resource('/api/users/:userId',
@@ -29,7 +29,7 @@ angular.module('bssApp').factory 'Users', ($resource) ->
         (-> errorHandler())
 
     all: ->
-      @service.query((-> null), @errorHandler)
+      $resource('/api/users').query((-> null), @errorHandler)
 
     find: (id, successHandler) ->
       @service.get {userId: id}, ((user)-> 
