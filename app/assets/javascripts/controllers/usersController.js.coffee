@@ -19,9 +19,10 @@ angular.module('bssApp').controller "UsersController", ($scope, Users, User) ->
 
   $scope.deleteUser = (id, ids) ->
     if confirm "Are you sure you want to remove this user?"
-      @usersService.delete id, 
-      -> $scope.users.splice(ids, 1) ,
-      -> serverErrorHandler
+      User.delete
+        id: id, 
+        -> $scope.users.splice(ids, 1) ,
+        -> serverErrorHandler
 
   $scope.addOpenUser = (user) ->
     $scope.openUsers.unshift user

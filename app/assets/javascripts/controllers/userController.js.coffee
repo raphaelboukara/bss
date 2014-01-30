@@ -1,12 +1,15 @@
 angular.module('bssApp').controller "UserController", ($scope, $routeParams, User, Clients) ->
      
   $scope.init = -> 
-    @userService = new User(serverErrorHandler)
-    $scope.user = @userService.find $routeParams.userId, (user) ->
-      $scope.editUser =
-        id: user.id
-        name: user.name
-        email: user.email
+    $scope.user = User.show 
+                    id: $routeParams.userId,
+                    (user) ->
+                      $scope.editUser =
+                        id: user.id
+                        name: user.name
+                        email: user.email,
+                    serverErrorHandler
+
     @clientService = new Clients($routeParams.userId, serverErrorHandler)
     $scope.clients = @clientService.all()
     $scope.master =
@@ -15,14 +18,16 @@ angular.module('bssApp').controller "UserController", ($scope, $routeParams, Use
       user_id: $routeParams.userId
     $scope.client = angular.copy $scope.master;
 
-  $scope.updateUser = (user) ->
-    @userService.update user,
+  $scope.updateUser = (args) ->
+    User.update args,
       (data) -> 
         $scope.user = data
         $scope.editUser = 
           id: data.id
           name: data.name
           email: data.email
+      (error) ->
+          args.errors = error.data.errors
 
   $scope.createClient = (client) ->
     @clientService.create client, 
