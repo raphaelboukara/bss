@@ -1,6 +1,3 @@
-// Place all the styles related to the Home controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
 @import "bootstrap";
 
 html, body {
@@ -16,23 +13,15 @@ html, body {
 
 		.row-screen {
 			height: 100%;
+			overflow: hidden;
 		}
 	}
 
 	.row-screen {
 		height: 100%;
+		overflow: hidden;
 	}
 }
 
-.row-blue {
-	background-color: #E3E5FA;
-}
 
-.row-red {
-	background-color: #FAE3E3;
-}
-
-.row-green {
-	background-color: #E7FAE3;
-}
 

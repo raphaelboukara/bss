@@ -6,4 +6,3 @@ angular.module('bssApp').factory 'Users', ['$resource', ($resource) ->
       create:
         method: 'POST'
   )]
-

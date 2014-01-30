@@ -1,7 +1,9 @@
 
 <div class="col-sm-12 col-screen">
 
-	<div class="row row-screen row-blue">
+	
+
+	<div class="row row-screen">
 		
 		<div class="col-sm-12" ng-init="init()">
 
@@ -70,9 +72,17 @@
 			</div>
 
 		</div>
-
 	</div>
 
-	<div user class="row row-screen row-red" info="openUser" on-close="removeOpenUser($index)" ng-repeat="openUser in openUsers"></div>
+	<div class="row row-screen" ng-repeat="openUser in openUsers" animate-screen="openUser.state" >
+		<div class="col-sm-12">
+			<a class="pull-right" ng-click="removeOpenUser($index)">
+				<h1 class="glyphicon glyphicon-remove-sign"></h1>
+			</a>
+			<h1>
+				USER <small>{{ openUser.name }} ({{ openUser.email }})</small>
+			</h1>
+		</div>
+	</div>
 
 </div>
