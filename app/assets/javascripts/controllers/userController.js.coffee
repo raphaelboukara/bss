@@ -1,7 +1,7 @@
-angular.module('bssApp').controller "UserController", ($scope, $routeParams, Users, Clients) ->
+angular.module('bssApp').controller "UserController", ($scope, $routeParams, User, Clients) ->
      
   $scope.init = -> 
-    @userService = new Users(serverErrorHandler)
+    @userService = new User(serverErrorHandler)
     $scope.user = @userService.find $routeParams.userId, (user) ->
       $scope.editUser =
         id: user.id

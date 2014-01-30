@@ -1,4 +1,11 @@
-angular.module('bssApp').factory 'Users', ($resource) ->
+angular.module('bssApp').factory 'Users', ['$resource', ($resource) ->
+  $resource('/api/users',  {},
+      query:
+        method: 'GET',
+        isArray: true
+  )]
+
+angular.module('bssApp').factory 'User', ($resource) ->
 
   class DDDDUsers
 
@@ -27,9 +34,6 @@ angular.module('bssApp').factory 'Users', ($resource) ->
       new @service().$delete {userId: id}, 
         (-> successHandler()), 
         (-> errorHandler())
-
-    all: ->
-      $resource('/api/users').query((-> null), @errorHandler)
 
     find: (id, successHandler) ->
       @service.get {userId: id}, ((user)-> 

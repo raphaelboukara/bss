@@ -1,8 +1,8 @@
-angular.module('bssApp').controller "UsersController", ($scope, Users) ->
+angular.module('bssApp').controller "UsersController", ($scope, Users, User) ->
      
   $scope.init = -> 
-    @usersService = new Users(serverErrorHandler)
-    $scope.users = @usersService.all()
+    @usersService = new User(serverErrorHandler)
+    $scope.users = Users.query()
     $scope.openUsers = []
     $scope.master =
       name: ""
