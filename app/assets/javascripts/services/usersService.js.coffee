@@ -3,6 +3,8 @@ angular.module('bssApp').factory 'Users', ['$resource', ($resource) ->
       query:
         method: 'GET',
         isArray: true
+      create:
+        method: 'POST'
   )]
 
 angular.module('bssApp').factory 'User', ($resource) ->
@@ -15,14 +17,7 @@ angular.module('bssApp').factory 'User', ($resource) ->
         {update: {method: 'PUT'}})
       @errorHandler = errorHandler
 
-    create: (attrs, successHandler) ->
-      new @service(user: attrs).$save (
-        (user) -> 
-          attrs.id = user.id
-          successHandler (user)), 
-        (error) -> 
-          attrs.errors = error.data.errors
-
+   
     update: (attrs, successHandler) ->
       new @service(user: attrs).$update {userId: attrs.id}, 
         ((user) -> 

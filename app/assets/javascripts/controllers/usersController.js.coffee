@@ -9,11 +9,13 @@ angular.module('bssApp').controller "UsersController", ($scope, Users, User) ->
       email: ""
     $scope.user = angular.copy $scope.master;
   
-  $scope.createUser = (user) ->
-    @usersService.create user, 
+  $scope.createUser = (args) ->
+    Users.create args, 
       (data) ->
           $scope.users.unshift data
-          $scope.user = angular.copy $scope.master
+          $scope.user = angular.copy $scope.master,
+      (error) ->
+          args.errors = error.data.errors
 
   $scope.deleteUser = (id, ids) ->
     if confirm "Are you sure you want to remove this user?"
