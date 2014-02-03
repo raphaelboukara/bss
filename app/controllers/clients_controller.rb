@@ -1,18 +1,18 @@
 class ClientsController < ApplicationController
 
 	respond_to :json
+	before_action :correct_user
 
 	def index
-		respond_with User.find(params[:user_id]).clients
+		respond_with current_user.clients
 	end
 
 	def show
-		respond_with User.find(params[:user_id]).clients.find(params[:id])
+		respond_with current_user.clients.find(params[:id])
 	end
 
 	def create
-		user = User.find(params[:user_id]);
-		respond_with(user.clients.create(client_params), :location => user_clients_url) 
+		respond_with(current_user.clients.create(client_params), :location => user_clients_url) 
 	end
 
 	def update
@@ -33,5 +33,12 @@ class ClientsController < ApplicationController
 
 		def client_params
 			params.require(:client).permit(:name, :email, :user_id)
+		end
+
+		def correct_user
+			if !signed_in?
+				error = {:error => "You are not connected"}
+				respond_with error, :status => 401, :location => new_session_url
+			end
 		end
 end

@@ -1,16 +1,19 @@
-angular.module('bssApp').controller "ClientController", ($scope, $routeParams, Users, Clients) ->
+angular.module('bssApp').controller "ClientController", ($scope, $routeParams, Users, Clients, Client) ->
      
-  $scope.init = -> 
-    @clientService = new Clients($routeParams.userId, serverErrorHandler)
-    $scope.client = @clientService.find $routeParams.clientId, (client) ->
-      $scope.editClient =
-        id: client.id
-        name: client.name
-        email: client.email
-        user_id: client.user_id
+  $scope.init = ->
+    $scope.client = Client.show 
+                      user_id: $routeParams.userId
+                      id: $routeParams.clientId,
+                      (client) ->
+                        $scope.editClient =
+                          id: client.id
+                          name: client.name
+                          email: client.email
+                          user_id: client.user_id,
+                      serverErrorHandler
 
-  $scope.updateClient = (client) ->
-    @clientService.update client,
+  $scope.updateClient = (args) ->
+    Client.update args, 
       (data) -> 
         $scope.client = data
         $scope.editClient = 
@@ -18,6 +21,8 @@ angular.module('bssApp').controller "ClientController", ($scope, $routeParams, U
           name: data.name
           email: data.email
           user_id: data.user_id
+      (error) ->
+        args.errors = error.data.errors
       
   serverErrorHandler = ->
     alert("There was a server error, please reload the page and try again.")

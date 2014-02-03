@@ -13,14 +13,38 @@ html, body {
 
 		.row-screen {
 			height: 100%;
-			overflow: hidden;
 		}
 	}
+}
 
-	.row-screen {
-		height: 100%;
-		overflow: hidden;
-	}
+
+ 
+.animate-screen.ng-enter, .animate-screen.ng-leave {
+	-webkit-animation-duration: 1s;
+	-webkit-animation-fill-mode: both;
+}
+.animate-screen.ng-enter {
+	-webkit-animation-name: moveY;
+}
+.animate-screen.ng-leave {
+	-webkit-animation-name: moveY;
+}
+
+@-webkit-keyframes moveY {
+  0% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+
+  100% {
+    -webkit-transform: translateY(-100%);
+    transform: translateY(-100%);
+  }
+}
+
+.moveY {
+  -webkit-animation-name: moveY;
+  animation-name: moveY;
 }
 
 

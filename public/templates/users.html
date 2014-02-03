@@ -1,7 +1,4 @@
-
 <div class="col-sm-12 col-screen">
-
-	
 
 	<div class="row row-screen">
 		
@@ -30,6 +27,20 @@
 								<div ng-repeat="error in user.errors.email">Email {{ error }}</div>
 							</span>
 						</div>
+						<div class="form-group" ng-class="{ 'has-error' : user.errors.password}">
+							<label class="control-label" for="password">Password:</label>
+							<input type="text" class="form-control" id="password" ng-model='user.password' placeholder="Enter user password">
+							<span class="help-block">
+								<div ng-repeat="error in user.errors.password">Password {{ error }}</div>
+							</span>
+						</div>
+						<div class="form-group" ng-class="{ 'has-error' : user.errors.password_confirmation}">
+							<label class="control-label" for="password_confirmation">Confirm password:</label>
+							<input type="text" class="form-control" id="password_confirmation" ng-model='user.password_confirmation' placeholder="Confirm user password">
+							<span class="help-block">
+								<div ng-repeat="error in user.errors.password_confirmation">Password {{ error }}</div>
+							</span>
+						</div>
 						<button type="submit" class="btn btn-default">ADD</button>
 					</form>
 				</div>
@@ -47,7 +58,7 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr ng-repeat="user in users">
+								<tr ng-repeat="user in users" class="animate-repeat">
 									<td>{{ user.id }}</td>
 									<td>{{ user.name }}</td>
 									<td>{{ user.email }}</td>
@@ -74,7 +85,7 @@
 		</div>
 	</div>
 
-	<div class="row row-screen" ng-repeat="openUser in openUsers" animate-screen="openUser.state" >
+	<div class="row row-screen animate-screen" ng-repeat="openUser in openUsers">
 		<div class="col-sm-12">
 			<a class="pull-right" ng-click="removeOpenUser($index)">
 				<h1 class="glyphicon glyphicon-remove-sign"></h1>

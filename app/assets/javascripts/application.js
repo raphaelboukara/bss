@@ -7,4 +7,5 @@
 //= require lib/angular/angular-route.min
 //= require lib/angular/angular-animate.min
 //= require app
-//= require_tree .
+//= require_tree ./controllers/.
+//= require_tree ./services/.
